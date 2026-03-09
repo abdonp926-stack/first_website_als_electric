@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Al's Electric — Licensed Residential Electrician | Escondido, CA</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #1B3A4B;
+    --primary-dark: #112A38;
+    --primary-light: #24506A;
+    --accent: #E8A838;
+    --accent-hover: #D49530;
+    --white: #FFFFFF;
+    --off-white: #F7F8FA;
+    --gray-100: #F1F3F5;
+    --gray-200: #DEE2E6;
+    --gray-400: #ADB5BD;
+    --gray-600: #6C757D;
+    --gray-800: #343A40;
+    --gray-900: #212529;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Outfit', sans-serif; color: var(--gray-900); background: var(--white); overflow-x: hidden; }
+
+  .topbar { background: var(--primary-dark); padding: 8px 0; font-size: 13px; color: rgba(255,255,255,0.7); }
+  .topbar-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; }
+  .topbar a { color: var(--accent); text-decoration: none; font-weight: 600; }
+  .topbar-right { display: flex; gap: 20px; align-items: center; }
+  .lang-switch { display: inline-flex; gap: 4px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; }
+  .lang-btn { padding: 3px 10px; font-size: 11px; font-weight: 600; border: none; cursor: pointer; background: transparent; color: rgba(255,255,255,0.6); font-family: 'Outfit', sans-serif; transition: all 0.2s; }
+  .lang-btn.active { background: var(--accent); color: var(--primary-dark); }
+
+  nav { background: var(--white); border-bottom: 1px solid var(--gray-200); position: sticky; top: 0; z-index: 900; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+  .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; height: 70px; }
+  .logo { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--primary); text-decoration: none; font-weight: 700; }
+  .logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 32px; align-items: center; }
+  .nav-links a { color: var(--gray-800); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.3s; }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-cta { background: var(--accent) !important; color: var(--white) !important; padding: 10px 24px !important; border-radius: 6px; font-weight: 700 !important; transition: background 0.3s !important; }
+  .nav-cta:hover { background: var(--accent-hover) !important; }
+
+  .hero { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 60%, #0D1F2B 100%); padding: 100px 24px 110px; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); opacity: 0.5; }
+  .hero-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; display: flex; align-items: center; gap: 60px; }
+  .hero-text { flex: 1; }
+  .hero-tag { display: inline-block; background: rgba(232,168,56,0.15); border: 1px solid rgba(232,168,56,0.3); border-radius: 4px; padding: 5px 14px; font-size: 12px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 20px; }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: 48px; color: var(--white); line-height: 1.15; margin-bottom: 18px; font-weight: 700; }
+  .hero h1 em { font-style: normal; color: var(--accent); }
+  .hero-desc { font-size: 17px; color: rgba(255,255,255,0.65); line-height: 1.7; max-width: 500px; margin-bottom: 30px; font-weight: 300; }
+  .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn { padding: 14px 30px; border-radius: 6px; font-size: 15px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s; border: none; cursor: pointer; font-family: 'Outfit', sans-serif; }
+  .btn-gold { background: var(--accent); color: var(--white); }
+  .btn-gold:hover { background: var(--accent-hover); transform: translateY(-1px); }
+  .btn-outline { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,0.3); }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+  .hero-right { flex: 0 0 380px; }
+  .hero-card { background: rgba(255,255,255,0.07); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 32px 28px; }
+  .hero-card-title { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); margin-bottom: 20px; }
+  .hero-card-item { display: flex; align-items: center; gap: 14px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.08); color: rgba(255,255,255,0.85); font-size: 14px; font-weight: 500; }
+  .hero-card-item:last-child { border-bottom: none; }
+  .hci-icon { width: 36px; height: 36px; background: rgba(232,168,56,0.12); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+
+  .trust-strip { background: var(--primary); border-top: 3px solid var(--accent); }
+  .trust-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(5, 1fr); }
+  .trust-badge { text-align: center; padding: 24px 16px; border-right: 1px solid rgba(255,255,255,0.08); transition: background 0.3s; }
+  .trust-badge:last-child { border-right: none; }
+  .trust-badge:hover { background: rgba(255,255,255,0.04); }
+  .trust-badge .tb-icon { font-size: 24px; margin-bottom: 6px; }
+  .trust-badge .tb-line1 { font-size: 14px; font-weight: 700; color: var(--white); }
+  .trust-badge .tb-line2 { font-size: 12px; color: rgba(255,255,255,0.5); }
+
+  .section { padding: 80px 24px; max-width: 1200px; margin: 0 auto; }
+  .section-tag { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 10px; }
+  .section-heading { font-family: 'Playfair Display', serif; font-size: 34px; color: var(--primary); margin-bottom: 10px; font-weight: 700; }
+  .section-sub { font-size: 16px; color: var(--gray-600); max-width: 560px; line-height: 1.7; margin-bottom: 44px; font-weight: 300; }
+
+  .svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .svc-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: 12px; padding: 28px 24px; transition: all 0.3s; position: relative; }
+  .svc-card::after { content: ''; position: absolute; bottom: 0; left: 20px; right: 20px; height: 3px; background: var(--accent); border-radius: 3px 3px 0 0; transform: scaleX(0); transition: transform 0.3s; }
+  .svc-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.08); transform: translateY(-3px); }
+  .svc-card:hover::after { transform: scaleX(1); }
+  .svc-icon { width: 50px; height: 50px; background: var(--off-white); border: 1px solid var(--gray-200); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 16px; }
+  .svc-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; color: var(--primary); }
+  .svc-card p { font-size: 14px; color: var(--gray-600); line-height: 1.65; font-weight: 300; }
+
+  .about-section { background: var(--off-white); padding: 80px 24px; }
+  .about-inner { max-width: 1200px; margin: 0 auto; display: flex; gap: 60px; align-items: center; }
+  .about-text { flex: 1; }
+  .about-img { flex: 0 0 420px; height: 320px; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 80px; }
+  .about-text p { font-size: 15px; color: var(--gray-600); line-height: 1.8; margin-bottom: 16px; font-weight: 300; }
+  .about-text p strong { color: var(--primary); font-weight: 600; }
+
+  .area-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+  .area-tag { background: var(--off-white); border: 1px solid var(--gray-200); border-radius: 6px; padding: 10px 20px; font-size: 14px; font-weight: 500; color: var(--primary); transition: all 0.3s; }
+  .area-tag:hover { background: var(--primary); color: var(--white); border-color: var(--primary); }
+
+  .testimonials { background: var(--primary); padding: 70px 24px; color: var(--white); }
+  .test-inner { max-width: 1200px; margin: 0 auto; }
+  .test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
+  .test-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 28px; }
+  .test-stars { color: var(--accent); font-size: 16px; margin-bottom: 14px; }
+  .test-card p { font-size: 14px; color: rgba(255,255,255,0.75); line-height: 1.7; font-weight: 300; font-style: italic; margin-bottom: 16px; }
+  .test-author { font-size: 13px; font-weight: 600; color: var(--accent); }
+  .test-location { font-size: 12px; color: rgba(255,255,255,0.4); }
+
+  .cta-section { background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%); padding: 60px 24px; text-align: center; }
+  .cta-section h2 { font-family: 'Playfair Display', serif; font-size: 34px; color: var(--white); margin-bottom: 12px; }
+  .cta-section p { color: rgba(255,255,255,0.85); font-size: 16px; margin-bottom: 28px; font-weight: 300; }
+  .cta-phone { font-family: 'Playfair Display', serif; font-size: 36px; color: var(--white); text-decoration: none; display: block; margin-bottom: 20px; font-weight: 700; }
+  .btn-white { background: var(--white); color: var(--primary); }
+  .btn-white:hover { background: var(--off-white); }
+
+  footer { background: var(--primary-dark); padding: 40px 24px; text-align: center; }
+  footer p { color: rgba(255,255,255,0.4); font-size: 13px; line-height: 1.8; }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hero-inner { flex-direction: column; text-align: center; }
+    .hero h1 { font-size: 34px; }
+    .hero-desc { max-width: 100%; }
+    .hero-btns { justify-content: center; }
+    .hero-right { flex: none; width: 100%; max-width: 340px; }
+    .svc-grid, .test-grid { grid-template-columns: 1fr; }
+    .trust-inner { grid-template-columns: repeat(2, 1fr); }
+    .trust-badge:nth-child(5) { grid-column: span 2; }
+    .about-inner { flex-direction: column; }
+    .about-img { flex: none; width: 100%; height: 200px; }
+    .topbar-inner { flex-direction: column; gap: 6px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div>
+      <span class="en">Serving Escondido & North San Diego County</span>
+      <span class="es">Sirviendo a Escondido y el Norte del Condado de San Diego</span>
+      &nbsp;|&nbsp; <a href="tel:+17605293765">(760) 529-3765</a>
+    </div>
+    <div class="topbar-right">
+      <span class="en">Licensed & Insured — CSLB #0000000</span>
+      <span class="es">Licenciado y Asegurado — CSLB #0000000</span>
+      <div class="lang-switch">
+        <button class="lang-btn active" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" onclick="setLang('es')">ES</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">Al's <span>Electric</span></a>
+    <div class="nav-links">
+      <a href="#services" class="en">Services</a>
+      <a href="#services" class="es">Servicios</a>
+      <a href="#about" class="en">About</a>
+      <a href="#about" class="es">Nosotros</a>
+      <a href="#area" class="en">Service Area</a>
+      <a href="#area" class="es">Área</a>
+      <a href="#reviews" class="en">Reviews</a>
+      <a href="#reviews" class="es">Reseñas</a>
+      <a href="#contact" class="nav-cta en">Call Now</a>
+      <a href="#contact" class="nav-cta es">Llámanos</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-tag en">Residential Electrician — Escondido, CA</div>
+      <div class="hero-tag es">Electricista Residencial — Escondido, CA</div>
+      <h1 class="en">Professional <em>Electrical Services</em> You Can Trust</h1>
+      <h1 class="es"><em>Servicios Eléctricos</em> Profesionales de Confianza</h1>
+      <p class="hero-desc en">From panel upgrades to full rewiring — Al's Electric delivers safe, reliable, and honest electrical work for homeowners across North San Diego County.</p>
+      <p class="hero-desc es">Desde actualización de paneles hasta recableado completo — Al's Electric ofrece trabajo eléctrico seguro, confiable y honesto para hogares en el norte del condado de San Diego.</p>
+      <div class="hero-btns">
+        <a href="tel:+17605293765" class="btn btn-gold en">📞 (760) 529-3765</a>
+        <a href="tel:+17605293765" class="btn btn-gold es">📞 (760) 529-3765</a>
+        <a href="#services" class="btn btn-outline en">Our Services →</a>
+        <a href="#services" class="btn btn-outline es">Nuestros Servicios →</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-card">
+        <div class="hero-card-title en">Why Choose Us</div>
+        <div class="hero-card-title es">¿Por Qué Elegirnos?</div>
+        <div class="hero-card-item"><div class="hci-icon">✓</div><span class="en">CSLB Licensed & Fully Insured</span><span class="es">Licencia CSLB y Completamente Asegurado</span></div>
+        <div class="hero-card-item"><div class="hci-icon">⚡</div><span class="en">Same-Day Service Available</span><span class="es">Servicio el Mismo Día Disponible</span></div>
+        <div class="hero-card-item"><div class="hci-icon">💲</div><span class="en">Free Estimates — No Surprises</span><span class="es">Estimados Gratis — Sin Sorpresas</span></div>
+        <div class="hero-card-item"><div class="hci-icon">🏠</div><span class="en">Residential Specialist</span><span class="es">Especialista Residencial</span></div>
+        <div class="hero-card-item"><div class="hci-icon">🌐</div><span>Hablamos Español</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="trust-strip">
+  <div class="trust-inner">
+    <div class="trust-badge"><div class="tb-icon">🔒</div><div class="tb-line1 en">Licensed</div><div class="tb-line1 es">Licenciado</div><div class="tb-line2">CSLB #0000000</div></div>
+    <div class="trust-badge"><div class="tb-icon">🛡️</div><div class="tb-line1 en">Fully Insured</div><div class="tb-line1 es">Asegurado</div><div class="tb-line2 en">Your Home Protected</div><div class="tb-line2 es">Tu Hogar Protegido</div></div>
+    <div class="trust-badge"><div class="tb-icon">⭐</div><div class="tb-line1 en">5-Star Rated</div><div class="tb-line1 es">5 Estrellas</div><div class="tb-line2">Google Reviews</div></div>
+    <div class="trust-badge"><div class="tb-icon">📍</div><div class="tb-line1">Local</div><div class="tb-line2">Escondido, CA</div></div>
+    <div class="trust-badge"><div class="tb-icon">✅</div><div class="tb-line1 en">Warranty</div><div class="tb-line1 es">Garantía</div><div class="tb-line2 en">Work Guaranteed</div><div class="tb-line2 es">Trabajo Garantizado</div></div>
+  </div>
+</div>
+
+<div class="section" id="services">
+  <div class="section-tag en">Our Services</div><div class="section-tag es">Nuestros Servicios</div>
+  <h2 class="section-heading en">Residential Electrical Services</h2><h2 class="section-heading es">Servicios Eléctricos Residenciales</h2>
+  <p class="section-sub en">Quality electrical work for your home — from quick repairs to major installations, done right the first time.</p>
+  <p class="section-sub es">Trabajo eléctrico de calidad para tu hogar — desde reparaciones rápidas hasta instalaciones mayores, bien hecho a la primera.</p>
+  <div class="svc-grid">
+    <div class="svc-card"><div class="svc-icon">⚡</div><h3 class="en">Panel Upgrades</h3><h3 class="es">Actualización de Paneles</h3><p class="en">Upgrade your electrical panel to meet modern power demands safely and to code.</p><p class="es">Actualiza tu panel eléctrico para cumplir con las demandas modernas de energía de forma segura.</p></div>
+    <div class="svc-card"><div class="svc-icon">🔌</div><h3 class="en">Rewiring</h3><h3 class="es">Recableado</h3><p class="en">Full and partial home rewiring for older homes or renovation projects.</p><p class="es">Recableado completo o parcial para casas antiguas o proyectos de remodelación.</p></div>
+    <div class="svc-card"><div class="svc-icon">🚗</div><h3 class="en">EV Charger Installation</h3><h3 class="es">Cargadores para Vehículos Eléctricos</h3><p class="en">Level 2 home charging stations installed professionally and permitted.</p><p class="es">Estaciones de carga Nivel 2 instaladas profesionalmente y con permiso.</p></div>
+    <div class="svc-card"><div class="svc-icon">💡</div><h3 class="en">Lighting & Ceiling Fans</h3><h3 class="es">Iluminación y Ventiladores</h3><p class="en">Indoor and outdoor lighting, recessed lighting, and ceiling fan installation.</p><p class="es">Iluminación interior y exterior, luces empotradas e instalación de ventiladores.</p></div>
+    <div class="svc-card"><div class="svc-icon">🔧</div><h3 class="en">Troubleshooting & Repairs</h3><h3 class="es">Diagnóstico y Reparaciones</h3><p class="en">Electrical issues diagnosed and fixed quickly — outlets, switches, circuits, and more.</p><p class="es">Problemas eléctricos diagnosticados y resueltos rápido — contactos, switches, circuitos y más.</p></div>
+    <div class="svc-card"><div class="svc-icon">🏗️</div><h3 class="en">New Construction</h3><h3 class="es">Construcción Nueva</h3><p class="en">Complete electrical installation for new builds, additions, and remodels.</p><p class="es">Instalación eléctrica completa para construcciones nuevas, adiciones y remodelaciones.</p></div>
+  </div>
+</div>
+
+<div class="about-section" id="about">
+  <div class="about-inner">
+    <div class="about-text">
+      <div class="section-tag en">Welcome</div><div class="section-tag es">Bienvenido</div>
+      <h2 class="section-heading en">Professionalism & Expertise Assured</h2><h2 class="section-heading es">Profesionalismo y Experiencia Garantizada</h2>
+      <p class="en"><strong>Al's Electric</strong> offers a full range of residential electrical services — from moving a light switch to complete house rewiring. We serve homeowners across Escondido, San Marcos, Valley Center, and greater North San Diego County.</p>
+      <p class="es"><strong>Al's Electric</strong> ofrece una gama completa de servicios eléctricos residenciales — desde mover un switch hasta recableado completo. Servimos a hogares en Escondido, San Marcos, Valley Center y todo el norte del condado de San Diego.</p>
+      <p class="en">Finding a prompt and reliable electrician isn't always easy. That's why we're committed to honest pricing, clean work, and clear communication — every single job.</p>
+      <p class="es">Encontrar un electricista confiable no siempre es fácil. Por eso nos comprometemos a precios honestos, trabajo limpio y comunicación clara — en cada trabajo.</p>
+    </div>
+    <div class="about-img">⚡</div>
+  </div>
+</div>
+
+<div class="section" id="area">
+  <div class="section-tag en">Where We Work</div><div class="section-tag es">Dónde Trabajamos</div>
+  <h2 class="section-heading en">Serving North San Diego County</h2><h2 class="section-heading es">Sirviendo al Norte del Condado de San Diego</h2>
+  <p class="section-sub en">Proudly providing residential electrical services to these communities and surrounding areas.</p>
+  <p class="section-sub es">Orgullosamente brindando servicios eléctricos residenciales a estas comunidades y áreas cercanas.</p>
+  <div class="area-tags">
+    <span class="area-tag">Escondido</span><span class="area-tag">San Marcos</span><span class="area-tag">Valley Center</span><span class="area-tag">Rancho Bernardo</span><span class="area-tag">Vista</span><span class="area-tag">Poway</span><span class="area-tag">Fallbrook</span><span class="area-tag">Oceanside</span>
+  </div>
+</div>
+
+<div class="testimonials" id="reviews">
+  <div class="test-inner">
+    <div class="section-tag en">What Our Customers Say</div><div class="section-tag es">Lo Que Dicen Nuestros Clientes</div>
+    <h2 class="section-heading en" style="color:#fff">Reviews From Real Customers</h2><h2 class="section-heading es" style="color:#fff">Reseñas de Clientes Reales</h2>
+    <div class="test-grid">
+      <div class="test-card"><div class="test-stars">★★★★★</div><p class="en">"Very professional and prompt. Alfonso diagnosed the issue quickly and had everything fixed the same day. Fair pricing and great communication throughout."</p><p class="es">"Muy profesional y puntual. Alfonso diagnosticó el problema rápidamente y lo arregló el mismo día. Precios justos y excelente comunicación."</p><div class="test-author">— Customer Name</div><div class="test-location">Escondido, CA</div></div>
+      <div class="test-card"><div class="test-stars">★★★★★</div><p class="en">"Al's Electric installed our EV charger and upgraded our panel. The work was clean, on time, and exactly what was quoted. Highly recommend."</p><p class="es">"Al's Electric instaló nuestro cargador EV y actualizó nuestro panel. El trabajo fue limpio, a tiempo y exactamente lo cotizado. Muy recomendado."</p><div class="test-author">— Customer Name</div><div class="test-location">San Marcos, CA</div></div>
+      <div class="test-card"><div class="test-stars">★★★★★</div><p class="en">"Reliable, honest, and skilled. We've used Al's Electric for multiple projects and they always deliver quality work. Our go-to electrician."</p><p class="es">"Confiable, honesto y hábil. Hemos usado a Al's Electric para varios proyectos y siempre entregan trabajo de calidad. Nuestro electricista de confianza."</p><div class="test-author">— Customer Name</div><div class="test-location">Valley Center, CA</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="cta-section" id="contact">
+  <h2 class="en">Ready to Get Started?</h2><h2 class="es">¿Listo Para Comenzar?</h2>
+  <p class="en">Call us today for a free estimate. We respond quickly — even if we're on a job.</p>
+  <p class="es">Llámanos hoy para un estimado gratis. Respondemos rápido — aunque estemos en otro trabajo.</p>
+  <a href="tel:+17605293765" class="cta-phone">(760) 529-3765</a>
+  <a href="tel:+17605293765" class="btn btn-white en">📞 Call Now — Free Estimate</a>
+  <a href="tel:+17605293765" class="btn btn-white es">📞 Llámanos — Estimado Gratis</a>
+</div>
+
+<footer>
+  <p><span class="en">© 2026 Al's Electric — Licensed Residential Electrician — CSLB #0000000<br>Serving Escondido and North San Diego County · Hablamos Español</span><span class="es">© 2026 Al's Electric — Electricista Residencial Licenciado — CSLB #0000000<br>Sirviendo a Escondido y el Norte del Condado de San Diego</span></p>
+</footer>
+
+<script>
+function setLang(lang) {
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    if ((lang === 'en' && b.textContent === 'EN') || (lang === 'es' && b.textContent === 'ES')) b.classList.add('active');
+  });
+  const show = lang === 'en' ? '.en' : '.es';
+  const hide = lang === 'en' ? '.es' : '.en';
+  document.querySelectorAll(hide).forEach(el => el.style.display = 'none');
+  document.querySelectorAll(show).forEach(el => {
+    const tag = el.tagName.toLowerCase();
+    if (tag === 'span') el.style.display = 'inline';
+    else if (tag === 'a' || tag === 'button') {
+      if (el.classList.contains('btn') || el.classList.contains('nav-cta')) el.style.display = 'inline-flex';
+      else el.style.display = 'inline';
+    } else el.style.display = 'block';
+  });
+  document.documentElement.lang = lang;
+}
+setLang('en');
+</script>
+</body>
+</html>
